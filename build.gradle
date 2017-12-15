@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+project.ext.mainClassName = "io.anuke.egg.EggBot"
+sourceCompatibility = 1.8
+version = '1.0'
+
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+repositories {
+    mavenCentral()
+ 	maven { 
+ 		url "https://oss.sonatype.org/content/repositories/snapshots/"
+ 		url 'https://jitpack.io'
+ 	}
+ 	
+    jcenter()
+}
+
+task run(dependsOn: classes, type: JavaExec) {
+    doLast{
+	    systemProperty "token", project.getProperty("token")
+        main = project.mainClassName
+        classpath = sourceSets.main.runtimeClasspath
+        standardInput = System.in
+        ignoreExitValue = true
+    }
+}
+
+dependencies {
+	compile 'com.github.austinv11:Discord4j:2.9.3'
+	compile 'org.xerial:sqlite-jdbc:3.21.0'
+	compile 'com.github.anuken:ucore:-SNAPSHOT'
+}

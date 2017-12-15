@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./gradlew run -Ptoken=${EGG_BOT_TOKEN}
