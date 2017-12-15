@@ -14,7 +14,7 @@ public class EggBot{
 	String token;
 	IDiscordClient client;
 	
-	double eggChance = 1 / 900;
+	double eggChance = 1.0 / 900.0;
 	
 	public EggBot(){
 		token = System.getProperty("token");
