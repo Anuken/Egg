@@ -19,13 +19,11 @@ repositories {
 }
 
 task run(dependsOn: classes, type: JavaExec) {
-    doLast{
-	    systemProperty "token", project.getProperty("token")
-        main = project.mainClassName
-        classpath = sourceSets.main.runtimeClasspath
-        standardInput = System.in
-        ignoreExitValue = true
-    }
+    systemProperty "token", project.getProperty("token")
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    ignoreExitValue = true
 }
 
 dependencies {
