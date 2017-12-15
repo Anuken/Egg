@@ -2,7 +2,6 @@
 /bin/
 /modules/
 /.settings/
-/.gradle/
 /gradle/
 /build/
 .classpath
