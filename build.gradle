@@ -26,6 +26,17 @@ task run(dependsOn: classes, type: JavaExec) {
     ignoreExitValue = true
 }
 
+task dist(type: Jar) {
+    from files(sourceSets.main.output.classesDirs)
+    from files(sourceSets.main.output.resourcesDir)
+    from {configurations.compile.collect {zipTree(it)}}
+ 
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+}
+
+
 dependencies {
 	compile 'com.github.austinv11:Discord4j:2.9.3'
 	compile 'org.xerial:sqlite-jdbc:3.21.0'
