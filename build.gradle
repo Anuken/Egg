@@ -8,6 +8,10 @@ version = '1.0'
 
 sourceSets.main.java.srcDirs = [ "src/" ]
 
+ext{
+
+}
+
 repositories {
     mavenCentral()
  	maven { 
@@ -30,6 +34,7 @@ task dist(type: Jar) {
     from files(sourceSets.main.output.classesDirs)
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
+    jar.baseName = "Egg"
  
     manifest {
         attributes 'Main-Class': project.mainClassName
