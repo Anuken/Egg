@@ -10,11 +10,17 @@ import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IMessage;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class EggBot{
 	String token;
 	IDiscordClient client;
 	
-	double eggChance = 1.0 / 600.0;
+	double eggChance = 1.0 / 700.0;
+	List<String> channels = Arrays.asList("social", "general");
+	List<String> limitedServers = Arrays.asList("Mindustry");
 	
 	public EggBot(){
 		token = System.getProperty("token");
@@ -38,7 +44,7 @@ public class EggBot{
 			m.addReaction(EmojiManager.getForAlias("egg"));
 			System.out.println("Egged.");
 		}else{
-			if(Mathf.chance(eggChance)){
+			if((!limitedServers.contains(m.getGuild().getName()) || channels.contains(m.getChannel().getName())) && Mathf.chance(eggChance)){
 				m.getChannel().sendMessage("egg");
 				System.out.println("Rare egg.");
 			}
