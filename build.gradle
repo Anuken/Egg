@@ -8,10 +8,6 @@ version = '1.0'
 
 sourceSets.main.java.srcDirs = [ "src/" ]
 
-ext{
-
-}
-
 repositories {
     mavenCentral()
  	maven { 
@@ -22,19 +18,10 @@ repositories {
     jcenter()
 }
 
-task run(dependsOn: classes, type: JavaExec) {
-    systemProperty "token", project.getProperty("token")
-    main = project.mainClassName
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    ignoreExitValue = true
-}
-
 task dist(type: Jar) {
     from files(sourceSets.main.output.classesDirs)
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
-    jar.baseName = "Egg"
  
     manifest {
         attributes 'Main-Class': project.mainClassName
