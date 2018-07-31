@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jflac:jflac-codec:1.5.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jflac/jflac-codec/1.5.2/21da27e1fa32a059040c09d05e4265ac0cec95fa/jflac-codec-1.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jflac/jflac-codec/1.5.2/d93bdae682ffc882bd1e0ff064b859f295789040/jflac-codec-1.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

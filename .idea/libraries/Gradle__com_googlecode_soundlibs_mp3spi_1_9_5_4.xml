@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.googlecode.soundlibs:mp3spi:1.9.5.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.soundlibs/mp3spi/1.9.5.4/3bdf9ffd65c157daec8735e127c3705513bd384d/mp3spi-1.9.5.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.soundlibs/mp3spi/1.9.5.4/62b042ffd0f66a598486440b0328874d436c5a3f/mp3spi-1.9.5.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
