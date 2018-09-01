@@ -40,7 +40,7 @@ public class EggBot{
 	@EventSubscriber
 	public void onMessageReceivedEvent(MessageReceivedEvent event){
 		IMessage m = event.getMessage();
-		if(m.getContent().toLowerCase().contains("egg")){
+		if(m.getContent().toLowerCase().contains("egg") || m.getContent().toLowerCase().contains("e\u200Bgg\n")){
 			m.addReaction(EmojiManager.getForAlias("egg"));
 			System.out.println("Egged.");
 		}else{
