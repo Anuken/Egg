@@ -10,6 +10,7 @@ import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IMessage;
 
+import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +41,7 @@ public class EggBot{
 	@EventSubscriber
 	public void onMessageReceivedEvent(MessageReceivedEvent event){
 		IMessage m = event.getMessage();
-		if(m.getContent().toLowerCase().replace("\u200B", "").contains("egg")){
+		if(Normalizer.normalize(m.getContent().toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").contains("egg")){
 			m.addReaction(EmojiManager.getForAlias("egg"));
 			System.out.println("Egged.");
 		}else{
