@@ -2,7 +2,6 @@ package io.anuke.egg;
 
 import com.vdurmont.emoji.EmojiManager;
 
-import io.anuke.ucore.util.Mathf;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
@@ -12,7 +11,6 @@ import sx.blah.discord.handle.obj.IMessage;
 
 import java.text.Normalizer;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class EggBot{
@@ -45,7 +43,7 @@ public class EggBot{
 			m.addReaction(EmojiManager.getForAlias("egg"));
 			System.out.println("Egged.");
 		}else{
-			if((!limitedServers.contains(m.getGuild().getName()) || channels.contains(m.getChannel().getName())) && Mathf.chance(eggChance)){
+			if((!limitedServers.contains(m.getGuild().getName()) || channels.contains(m.getChannel().getName())) && Math.random() < eggChance){
 				m.getChannel().sendMessage("egg");
 				System.out.println("Rare egg.");
 			}

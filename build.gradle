@@ -10,11 +10,7 @@ sourceSets.main.java.srcDirs = [ "src/" ]
 
 repositories {
     mavenCentral()
- 	maven { 
- 		url "https://oss.sonatype.org/content/repositories/snapshots/"
- 		url 'https://jitpack.io'
- 	}
- 	
+ 	maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     jcenter()
 }
 
@@ -31,6 +27,4 @@ task dist(type: Jar) {
 
 dependencies {
 	compile 'com.github.austinv11:Discord4j:2.9.3'
-	compile 'org.xerial:sqlite-jdbc:3.21.0'
-	compile 'com.github.anuken:ucore:-SNAPSHOT'
 }
