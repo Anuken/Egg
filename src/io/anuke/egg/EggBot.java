@@ -7,11 +7,13 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 
 import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EggBot{
 	String token;
@@ -29,6 +31,7 @@ public class EggBot{
 		clientBuilder.withToken(token);
 
 		client = clientBuilder.login();
+		System.out.println("Egging in many servers: " + client.getGuilds().stream().map(IGuild::getName).collect(Collectors.toList()));
 
 		EventDispatcher event = client.getDispatcher();
 		event.registerListener(this);
