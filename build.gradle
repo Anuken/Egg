@@ -6,25 +6,28 @@ project.ext.mainClassName = "io.anuke.egg.EggBot"
 sourceCompatibility = 1.8
 version = '1.0'
 
-sourceSets.main.java.srcDirs = [ "src/" ]
+sourceSets.main.java.srcDirs = ["src/"]
 
-repositories {
+repositories{
     mavenCentral()
- 	maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven{ url 'https://jitpack.io' }
+
+    maven{ url 'https://jitpack.io' }
+
     jcenter()
 }
 
-task dist(type: Jar) {
+task dist(type: Jar){
     from files(sourceSets.main.output.classesDirs)
     from files(sourceSets.main.output.resourcesDir)
-    from {configurations.compile.collect {zipTree(it)}}
- 
-    manifest {
+    from{ configurations.compile.collect{ zipTree(it) } }
+
+    manifest{
         attributes 'Main-Class': project.mainClassName
     }
 }
 
 
-dependencies {
-	compile 'com.github.austinv11:Discord4j:2.9.3'
+dependencies{
+    compile 'com.github.austinv11:Discord4j:2.9.3'
 }
