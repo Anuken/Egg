@@ -7,6 +7,7 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.impl.events.shard.ShardReadyEvent;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 
@@ -31,12 +32,16 @@ public class EggBot{
 		clientBuilder.withToken(token);
 
 		client = clientBuilder.login();
-		System.out.println("Egging in many servers: " + client.getGuilds().stream().map(IGuild::getName).collect(Collectors.toList()));
 
 		EventDispatcher event = client.getDispatcher();
 		event.registerListener(this);
 
 		System.out.println("Discord bot up.");
+	}
+
+	@EventSubscriber
+	public void onShardReady(ShardReadyEvent event){
+		System.out.println("Egging in many servers: " + client.getGuilds().stream().map(IGuild::getName).collect(Collectors.toList()));
 	}
 	
 	@EventSubscriber
