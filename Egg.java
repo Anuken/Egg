@@ -3,11 +3,11 @@ import discord4j.core.event.domain.message.*;
 import discord4j.core.object.entity.*;
 import discord4j.core.object.reaction.*;
 
-import java.text.Normalizer;
+import java.text.*;
 
 public class Egg{
-	
-	public static void main(String[] args){
+
+    public static void main(String[] args){
         final DiscordClient client = new DiscordClientBuilder(System.getProperty("token")).build();
 
         client.getEventDispatcher().on(MessageCreateEvent.class).map(MessageCreateEvent::getMessage)
@@ -19,5 +19,5 @@ public class Egg{
             .flatMap(Message::getChannel).flatMap(channel -> channel.createMessage("egg")).subscribe();
 
         client.login().block();
-	}
+    }
 }
