@@ -6,7 +6,6 @@ import discord4j.core.object.reaction.*;
 import java.text.*;
 
 public class Egg{
-
     public static void main(String[] args){
         final DiscordClient client = new DiscordClientBuilder(System.getProperty("token")).build();
 
