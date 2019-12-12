@@ -2,4 +2,4 @@
 ./gradlew dist
 alias egg="echo"
 egg "egg"
-java -Dtoken=${EGG_BOT_TOKEN} -jar build/libs/Egg-1.0.jar
+java -Dtoken=${EGG_BOT_TOKEN} -jar build/libs/Egg.jar
