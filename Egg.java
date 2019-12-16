@@ -14,7 +14,7 @@ public class Egg{
             .flatMap(m -> m.addReaction(ReactionEmoji.unicode("\uD83E\uDD5A")))
             .subscribe();
 
-        client.getEventDispatcher().on(MessageCreateEvent.class).map(MessageCreateEvent::getMessage).filter(m -> Math.random() < 1.0 / 1400.0)
+        client.getEventDispatcher().on(MessageCreateEvent.class).map(MessageCreateEvent::getMessage).filter(m -> Math.random() < 1.0 / 2000.0)
             .flatMap(Message::getChannel).flatMap(channel -> channel.createMessage("egg")).subscribe();
 
         client.login().block();
