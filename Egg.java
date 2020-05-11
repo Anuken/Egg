@@ -1,22 +1,25 @@
-import discord4j.core.*;
-import discord4j.core.event.domain.message.*;
-import discord4j.core.object.entity.*;
-import discord4j.core.object.reaction.*;
+import net.dv8tion.jda.api.*;
+import net.dv8tion.jda.api.events.message.*;
+import net.dv8tion.jda.api.hooks.*;
+import net.dv8tion.jda.api.requests.*;
 
 import java.text.*;
+import java.util.*;
 
-public class Egg{
-    public static void main(String[] args){
-        final DiscordClient client = new DiscordClientBuilder(System.getProperty("token")).build();
+public class Egg extends ListenerAdapter{
 
-        client.getEventDispatcher().on(MessageCreateEvent.class).map(MessageCreateEvent::getMessage)
-            .filter(msg -> msg.getContent().map(s -> Normalizer.normalize(s.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").contains("egg")).orElse(false))
-            .flatMap(m -> m.addReaction(ReactionEmoji.unicode("\uD83E\uDD5A")))
-            .subscribe();
+    public static void main(String[] args) throws Exception{
+        JDABuilder.create(System.getProperty("token"), Arrays.asList(GatewayIntent.GUILD_MESSAGES)).addEventListeners(new Egg()).build();
+    }
 
-        client.getEventDispatcher().on(MessageCreateEvent.class).map(MessageCreateEvent::getMessage).filter(m -> Math.random() < 1.0 / 7000.0)
-            .flatMap(Message::getChannel).flatMap(channel -> channel.createMessage("egg")).subscribe();
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event){
+        if(Normalizer.normalize(event.getMessage().getContentRaw().toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").contains("egg")){
+            event.getMessage().addReaction("\uD83E\uDD5A").queue();
+        }
 
-        client.login().block();
+        if(Math.random() < 1.0 / 7000.0){
+            event.getChannel().sendMessage("egg").queue();
+        }
     }
 }
