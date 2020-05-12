@@ -2,6 +2,8 @@ import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.events.message.*;
 import net.dv8tion.jda.api.hooks.*;
 import net.dv8tion.jda.api.requests.*;
+import net.dv8tion.jda.api.utils.*;
+import net.dv8tion.jda.api.utils.cache.*;
 
 import java.text.*;
 import java.util.*;
@@ -9,7 +11,9 @@ import java.util.*;
 public class Egg extends ListenerAdapter{
 
     public static void main(String[] args) throws Exception{
-        JDABuilder.create(System.getProperty("token"), Arrays.asList(GatewayIntent.GUILD_MESSAGES)).addEventListeners(new Egg()).build();
+        JDABuilder.create(System.getProperty("token"), Arrays.asList(GatewayIntent.GUILD_MESSAGES))
+        .disableCache(Arrays.asList(CacheFlag.values()))
+        .setMemberCachePolicy(MemberCachePolicy.NONE).addEventListeners(new Egg()).build();
     }
 
     @Override

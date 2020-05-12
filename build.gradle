@@ -3,11 +3,18 @@ apply plugin: 'java'
 sourceSets.main.java.srcDirs = ["$projectDir/"]
 sourceSets.main.java.include "Egg.java"
 
-repositories{ maven{ url "https://jcenter.bintray.com" } }
-dependencies{ implementation "net.dv8tion:JDA:4.1.1_148" }
+repositories{
+    maven{ url "https://jcenter.bintray.com" }
+    jcenter()
+    mavenCentral()
+}
+dependencies{
+    implementation "net.dv8tion:JDA:4.1.1_148"
+    implementation 'net.sf.trove4j:trove4j:3.0.3'
+}
 
 task dist(type: Jar, dependsOn: classes){
     manifest{ attributes 'Main-Class': "Egg" }
-    from{ configurations.compileClasspath.collect{ it }}
+    from{ configurations.compileClasspath.collect{ it.isDirectory() ? it : it.name.endsWith("pom") ? it : zipTree(it)}}
     from files(sourceSets.main.output)
 }
