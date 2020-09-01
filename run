@@ -1,13 +1,1 @@
-#!/usr/bin/env bash
-./gradlew dist
-
-while true; do
-
-java -Dtoken=${EGG_BOT_TOKEN} -jar build/libs/Egg.jar
-
-excode=$?
-if [ $excode -eq 0 ] || [ $excode -eq 130 ]; then
-        exit 0
-fi
-
-done
+node egg.js
