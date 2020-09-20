@@ -1,0 +1,27 @@
+{
+  "name": "egg",
+  "version": "1.0.0",
+  "description": "The bot responds to eggs.",
+  "main": "egg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anuken/Egg.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "egg"
+  ],
+  "author": "Anuken",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Anuken/Egg/issues"
+  },
+  "homepage": "https://github.com/Anuken/Egg#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0"
+  }
+}

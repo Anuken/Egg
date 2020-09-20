@@ -1,3 +1,5 @@
+require("dotenv"); // Load env configuration
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
