@@ -14,11 +14,10 @@ client.on('message', msg => {
 		msg.react('🥚');
 		eggCount++;
 		client.user.setPresence({
-			game: { 
-				name: `${eggCount} 🥚`,
-				type: 'WATCHING'
+			activity: { 
+				name: `${eggCount} 🥚`
 			},
-			status: 'idle'
+			status: 'online'
 		})
 	}
 });
