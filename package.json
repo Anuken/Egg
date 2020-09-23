@@ -4,7 +4,7 @@
   "description": "The bot responds to eggs.",
   "main": "egg.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"start": "node egg.js"
   },
   "repository": {
     "type": "git",
