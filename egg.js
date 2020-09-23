@@ -10,7 +10,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-	if(msg.content.includes("egg")){
+	if(msg.content.toLowerCase().includes("egg")){
 		msg.react('🥚');
 		eggCount++;
 		client.user.setPresence({
