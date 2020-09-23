@@ -22,7 +22,7 @@ client.on('message', msg => {
 	eggCount++;
 	client.user.setPresence({
       game: { 
-        name: `${eggCount} eggs.`,
+        name: `${eggCount} 🥚`,
         type: 'WATCHING'
       },
       status: 'idle'
