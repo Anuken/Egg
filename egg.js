@@ -32,7 +32,6 @@ function updatePresence(eggCount) {
     let expirationTime = cooldown + cooldownAmount;
 
     if (now < expirationTime) {
-        cooldown = now;
         return;
     } // if the presence is attempting to get updated too quickily
 
@@ -42,4 +41,5 @@ function updatePresence(eggCount) {
         },
         status: 'online',
     });
+    cooldown = now;
 }
