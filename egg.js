@@ -7,6 +7,8 @@ let eggCount = 0;
 let cooldown = 0; // this is the variable used to store the last time a presence was posted
 let cooldownAmount = 300000; // this is the number of milliseconds before the presence can be updated
 
+const prefix = '!';
+
 client.on('ready', () => {
     cooldown = Date.now();
     console.log(`Logged in as ${client.user.tag}!`);
@@ -14,7 +16,9 @@ client.on('ready', () => {
 
 client.on('message', (msg) => {
     let content = msg.content.toLowerCase();
-    if (content.includes('egg')) {
+    if (content === `${prefix}eggcount`) {
+        return msg.channel.send(`eggCount: ${eggCount}`);
+    } else if (content.includes('egg')) {
         msg.react('🥚');
         eggCount++;
         updatePresence(eggCount);
