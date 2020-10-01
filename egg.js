@@ -6,8 +6,7 @@ const client = new Discord.Client();
 let eggCount = 0;
 let cooldown = 0; // this is the variable used to store the last time a presence was posted
 let cooldownAmount = 300000; // this is the number of milliseconds before the presence can be updated
-
-const prefix = '!';
+let eggsCreated = 0;
 
 client.on('ready', () => {
     cooldown = Date.now();
@@ -16,17 +15,22 @@ client.on('ready', () => {
 
 client.on('message', (msg) => {
     let content = msg.content.toLowerCase();
-    if (content === `${prefix}eggcount`) {
-        return msg.channel.send(`eggCount: ${eggCount}`);
-    } else if (content.includes('egg')) {
+    if (content.startsWith('🥚?')) {
+        return msg.channel.send(`${eggCount}🥚`);
+    }
+    if (content.startsWith('🥚!')) {
+        return msg.channel.send(`${eggsCreated}🥚`);
+    }
+    if (content.includes('egg')) {
         msg.react('🥚');
         eggCount++;
-        updatePresence(eggCount);
+        eggsCreated++;
     } else if (content.includes('omelette')) {
+        // you can remove this if you prefer
         msg.react('🍴');
         eggCount--;
-        updatePresence(eggCount);
     }
+    return updatePresence(eggCount);
 });
 
 client.login(process.env.EGG_BOT_TOKEN);
