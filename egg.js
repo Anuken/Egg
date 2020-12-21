@@ -21,5 +21,8 @@ client.on('message', msg => {
 		})
 	}
 });
-
+client.on('message', msg => {
+if(msg.channel.fetchMessage(261323096617779201)){
+msg.delete();
+}};
 client.login(process.env.EGG_BOT_TOKEN);
