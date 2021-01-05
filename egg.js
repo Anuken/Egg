@@ -10,6 +10,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+	if(msg.author.bot)return;
 	if(msg.content.toLowerCase().includes("egg")){
 		msg.react('🥚');
 		eggCount++;
