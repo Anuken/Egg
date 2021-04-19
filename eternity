@@ -1,0 +1,4 @@
+while :
+do
+nim r -d:ssl egg.nim
+done

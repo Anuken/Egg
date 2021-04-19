@@ -1,11 +1,3 @@
-*.class
-/bin/
-/modules/
-/.settings/
-/.gradle/
-/build/
-/.idea/
-.classpath
-.project
-node_modules
+eggs.txt
 .env
+.idea

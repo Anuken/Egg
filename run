@@ -1,1 +1,1 @@
-npm start
+nim r -d:ssl egg.nim
