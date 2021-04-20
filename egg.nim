@@ -17,12 +17,14 @@ proc messageCreate(s: Shard, m: Message) {.event(discord).} =
   if not m.author.bot and m.content.toLowerAscii.contains("egg"):
     eggs.inc
 
-    await discord.api.addMessageReaction(m.channelId, m.id, "🥚")
-    await s.updateStatus(activity = ActivityStatus(
-      name: $eggs & " 🥚",
-      kind: atPlaying
-    ).some, status = "online")
-    writeFile("eggs.txt", $eggs)
-
+    try:
+      await discord.api.addMessageReaction(m.channelId, m.id, "🥚")
+      await s.updateStatus(activity = ActivityStatus(
+        name: $eggs & " 🥚",
+        kind: atPlaying
+      ).some, status = "online")
+      writeFile("eggs.txt", $eggs)
+    except:
+      echo getCurrentExceptionMsg()
 
 waitFor discord.startSession()
