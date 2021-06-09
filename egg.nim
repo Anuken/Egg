@@ -25,6 +25,6 @@ proc messageCreate(s: Shard, m: Message) {.event(discord).} =
       ).some, status = "online")
       writeFile("eggs.txt", $eggs)
     except:
-      echo getCurrentExceptionMsg()
+      discard #I don't care
 
 waitFor discord.startSession()
